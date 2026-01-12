@@ -1,0 +1,370 @@
+{
+  "test_info": {
+    "title": "Test Zaliczeniowy - AI w Marketingu",
+    "subtitle": "Studia Podyplomowe UKEN - Social Media & AI Marketing",
+    "duration_minutes": 30,
+    "total_questions": 27,
+    "pass_threshold": 0.48,
+    "pass_count": 13
+  },
+  "categories": [
+    "Podstawy AI w Marketingu",
+    "Modele LLM i ich zastosowania",
+    "Strategia i praktyczne zastosowania",
+    "Nowa era marketingu",
+    "Zaawansowane koncepcje AI"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "category": "Podstawy AI w Marketingu",
+      "question": "Kiedy warto stosować szczegółowe, strukturalne prompty (np. C.R.E.A.T.E., DELTA)?",
+      "options": {
+        "a": "Zawsze, przy każdym zapytaniu do AI",
+        "b": "Nigdy, nowoczesne modele ich nie potrzebują",
+        "c": "Gdy proste prompty nie dają oczekiwanych rezultatów lub przy bardzo złożonych, wieloetapowych zadaniach",
+        "d": "Tylko przy tworzeniu chatbotów i asystentów"
+      },
+      "correct_answer": "c",
+      "explanation": "Nowoczesne modele AI świetnie radzą sobie z prostymi, naturalnymi instrukcjami. Szczegółowe frameworki są przydatne dopiero gdy proste podejście nie działa lub zadanie jest bardzo złożone."
+    },
+    {
+      "id": 2,
+      "category": "Podstawy AI w Marketingu",
+      "question": "Która z poniższych cech najlepiej charakteryzuje GPT-4o w kontekście marketingu?",
+      "options": {
+        "a": "Błyskotliwy dyrektor kreatywny - świetny w kreatywności i interaktywnych asystentach",
+        "b": "Najlepszy do analizy prawnej i finansowej z najwyższą precyzją",
+        "c": "Najtańszy model do masowych operacji przy akceptowalnej jakości",
+        "d": "Najlepszy do analizy ogromnych zbiorów danych i długich dokumentów"
+      },
+      "correct_answer": "a",
+      "explanation": "GPT-4o wyróżnia się kreatywnym podejściem do generowania treści marketingowych, chwytliwych nagłówków i konwersacyjnego stylu komunikacji."
+    },
+    {
+      "id": 3,
+      "category": "Podstawy AI w Marketingu",
+      "question": "Co oznacza pojęcie \"okno kontekstowe\" (context window) w modelach LLM?",
+      "options": {
+        "a": "Ilość danych, którą model może przeanalizować w jednym zapytaniu",
+        "b": "Czas, w którym model przetwarza zapytanie użytkownika",
+        "c": "Liczba użytkowników, którzy mogą jednocześnie korzystać z modelu",
+        "d": "Okres, w którym model zachowuje pamięć o poprzednich rozmowach"
+      },
+      "correct_answer": "a",
+      "explanation": "Okno kontekstowe (context window) określa maksymalną liczbę tokenów, które model może przetworzyć jednocześnie."
+    },
+    {
+      "id": 4,
+      "category": "Podstawy AI w Marketingu",
+      "question": "Który model LLM jest określany jako \"Elegancki Strateg Komunikacji\" ze względu na swoją precyzję i formalny styl?",
+      "options": {
+        "a": "GPT-4o",
+        "b": "Gemini 1.5 Pro",
+        "c": "Claude 3 Opus",
+        "d": "Llama 3 70B"
+      },
+      "correct_answer": "c",
+      "explanation": "Claude 3 Opus wyróżnia się elegancją komunikacji, precyzją językową i budowaniem zaufania przez formalny, autorytatywny ton."
+    },
+    {
+      "id": 5,
+      "category": "Podstawy AI w Marketingu",
+      "question": "Framework DELTA w konstruowaniu promptów oznacza:",
+      "options": {
+        "a": "Dane, Efektywność, Logika, Transformacja, Analiza",
+        "b": "Wykluczenia, Przykład, Ograniczenia, Ton, Widownia-Odbiorcy",
+        "c": "Design, Ewaluacja, Logowanie, Testowanie, Aplikacja",
+        "d": "Dystrybucja, Elementy, Limity, Tempo, Audytorium"
+      },
+      "correct_answer": "b",
+      "explanation": "DELTA to framework pomocny w strukturyzowaniu promptów poprzez określenie: czego NIE chcemy (Wykluczenia), jak ma wyglądać output (Przykład), jakie są ramy (Ograniczenia), jaki styl komunikacji (Ton) i do kogo kierujemy (Widownia-Odbiorcy)."
+    },
+    {
+      "id": 6,
+      "category": "Modele LLM i ich zastosowania",
+      "question": "Gemini 1.5 Pro wyróżnia się szczególnie w:",
+      "options": {
+        "a": "Generowaniu kreatywnych kampanii marketingowych",
+        "b": "Najszybszej obsłudze klienta przy najniższych kosztach",
+        "c": "Pisaniu eleganckiego kodu i debugowaniu",
+        "d": "Analizie ogromnych zbiorów danych, w tym wideo i baz kodu"
+      },
+      "correct_answer": "d",
+      "explanation": "Gemini 1.5 Pro ma bardzo duże okno kontekstowe, co pozwala na analizę ogromnych dokumentów, wideo i baz kodu jednocześnie."
+    },
+    {
+      "id": 7,
+      "category": "Modele LLM i ich zastosowania",
+      "question": "Jakie jest główne zastosowanie modeli klasy \"Flash\" i \"Haiku\" (np. Gemini Flash, Claude Haiku)?",
+      "options": {
+        "a": "Analiza skomplikowanych dokumentów prawnych i finansowych",
+        "b": "Tworzenie długich, szczegółowych raportów strategicznych",
+        "c": "Szybka, masowa obsługa klienta i moderacja treści przy niskich kosztach",
+        "d": "Generowanie wysokiej jakości grafik i obrazów"
+      },
+      "correct_answer": "c",
+      "explanation": "Modele \"Flash\" i \"Haiku\" są zoptymalizowane pod kątem szybkości i niskich kosztów, idealne do masowych operacji."
+    },
+    {
+      "id": 8,
+      "category": "Modele LLM i ich zastosowania",
+      "question": "W kontekście budowania asystentów AI, które elementy są kluczowe dla stworzenia efektywnego kontekstu?",
+      "options": {
+        "a": "Buyer persony, dane o produkcie/usłudze, konkurencji, cenach i strategii",
+        "b": "Tylko nazwa firmy i branża",
+        "c": "Wyłącznie lista produktów z cenami",
+        "d": "Jedynie informacje o CEO i historii firmy"
+      },
+      "correct_answer": "a",
+      "explanation": "Kompleksowy kontekst obejmujący persony, produkt, konkurencję i strategię jest kluczowy dla personalizacji odpowiedzi AI."
+    },
+    {
+      "id": 9,
+      "category": "Modele LLM i ich zastosowania",
+      "question": "Która platforma służy do porównywania i testowania różnych modeli LLM w czasie rzeczywistym poprzez bezpośrednie zestawienie odpowiedzi?",
+      "options": {
+        "a": "Google AI Studio",
+        "b": "Claude Projects",
+        "c": "ChatGPT Playground",
+        "d": "LM Arena (AI Arena)"
+      },
+      "correct_answer": "d",
+      "explanation": "LM Arena (lmarena.ai) pozwala na blind testing różnych modeli poprzez głosowanie community na lepsze odpowiedzi."
+    },
+    {
+      "id": 10,
+      "category": "Modele LLM i ich zastosowania",
+      "question": "Która odpowiedź najtrafniej opisuje zasady wyboru modelu AI do konkretnej realizacji projektu marketingowego?",
+      "options": {
+        "a": "Zawsze wybieraj najdroższy model, bo jest najlepszy",
+        "b": "Używaj jednego sprawdzonego modelu do wszystkich zadań w firmie",
+        "c": "Dopasuj model do specyfiki zadania - nie ma jednego idealnego modelu do wszystkiego",
+        "d": "Wybieraj tylko modele od największych firm technologicznych"
+      },
+      "correct_answer": "c",
+      "explanation": "Kluczową zasadą w strategii AI jest dopasowanie narzędzia do zadania. Nie istnieje jeden \"najlepszy\" model - istnieją modele najlepsze do konkretnych zastosowań."
+    },
+    {
+      "id": 11,
+      "category": "Strategia i praktyczne zastosowania",
+      "question": "AEO (Answer Engine Optimization) różni się od SEO tym, że:",
+      "options": {
+        "a": "Skupia się na linkach zamiast na cytowaniach",
+        "b": "Nie wymaga tworzenia treści, tylko kupowania reklam",
+        "c": "Optymalizuje pod cytowania w odpowiedziach AI, a nie linki w wynikach wyszukiwania",
+        "d": "Jest używane tylko do optymalizacji video na YouTube"
+      },
+      "correct_answer": "c",
+      "explanation": "AEO koncentruje się na optymalizacji treści pod cytowania (citations) w odpowiedziach generowanych przez AI, zamiast na linkach w SERP."
+    },
+    {
+      "id": 12,
+      "category": "Strategia i praktyczne zastosowania",
+      "question": "W strategii AEO, która platforma jest szczególnie ważna dla ChatGPT ze względu na umowy licencyjne?",
+      "options": {
+        "a": "LinkedIn",
+        "b": "Twitter/X",
+        "c": "Facebook",
+        "d": "Reddit"
+      },
+      "correct_answer": "d",
+      "explanation": "ChatGPT ma umowę licencyjną z Reddit, co sprawia, że Reddit jest kluczowym źródłem cytowań dla tego modelu."
+    },
+    {
+      "id": 13,
+      "category": "Strategia i praktyczne zastosowania",
+      "question": "Co jest fundamentem skutecznego AI marketingu według zasady \"Lepsza data = lepszy kontekst = lepszy output\"?",
+      "options": {
+        "a": "Posiadanie najnowszego modelu AI",
+        "b": "Duży budżet na reklamy",
+        "c": "Wysokiej jakości, zróżnicowane dane o klientach i produkcie",
+        "d": "Zatrudnienie wielu specjalistów AI"
+      },
+      "correct_answer": "c",
+      "explanation": "Jakość i różnorodność danych wejściowych bezpośrednio przekłada się na jakość outputu AI w marketingu."
+    },
+    {
+      "id": 14,
+      "category": "Strategia i praktyczne zastosowania",
+      "question": "Google AI Max w porównaniu do tradycyjnego human-driven marketingu:",
+      "options": {
+        "a": "Drastycznie zwiększa konwersje i lepiej targetuje niż ludzie",
+        "b": "Konsekwentnie przegrywa z najlepszymi ludzkimi marketerami",
+        "c": "Działa tylko w przypadku małych firm z ograniczonym budżetem",
+        "d": "Nie może tworzyć treści reklamowych, tylko targetować"
+      },
+      "correct_answer": "a",
+      "explanation": "Google AI Max w testach A/B konsekwentnie przewyższa kampanie prowadzone przez ludzi pod względem konwersji i targetowania."
+    },
+    {
+      "id": 15,
+      "category": "Strategia i praktyczne zastosowania",
+      "question": "Concept \"Messy Middle\" w ścieżce zakupowej klienta odnosi się do:",
+      "options": {
+        "a": "Chaotycznego rozkładu produktów w sklepie stacjonarnym",
+        "b": "Złożonej, nieliniowej pętli eksploracji i ewaluacji między wyzwalaczem zakupu a decyzją",
+        "c": "Problemów technicznych podczas płatności online",
+        "d": "Dezorganizacji w działach marketingu i sprzedaży"
+      },
+      "correct_answer": "b",
+      "explanation": "\"Messy Middle\" to koncepcja Google opisująca złożoną, nieliniową ścieżkę zakupową, gdzie klienci wielokrotnie przechodzą przez fazy eksploracji i ewaluacji przed podjęciem decyzji."
+    },
+    {
+      "id": 16,
+      "category": "Nowa era marketingu",
+      "question": "Przejście od SEO do AEO oznacza zmianę z:",
+      "options": {
+        "a": "Optymalizacji pod wyszukiwarki na optymalizację pod media społecznościowe",
+        "b": "Walki o linki na walkę o cytowania w odpowiedziach AI",
+        "c": "Treści pisanych na treści wideo",
+        "d": "Marketingu B2B na marketing B2C"
+      },
+      "correct_answer": "b",
+      "explanation": "Transformacja z SEO na AEO to przejście od konkurowania o pozycje w wynikach wyszukiwania do konkurowania o cytowania w odpowiedziach AI."
+    },
+    {
+      "id": 17,
+      "category": "Nowa era marketingu",
+      "question": "\"Playground\" w kontekście nowoczesnej ścieżki zakupowej klienta oznacza:",
+      "options": {
+        "a": "Gamifikację procesu sprzedaży",
+        "b": "Rozproszoną, nieliniową ścieżkę zakupową po wielu platformach",
+        "c": "Specjalną strefę testową dla nowych produktów",
+        "d": "Miejsce zabaw dla dzieci w sklepach stacjonarnych"
+      },
+      "correct_answer": "b",
+      "explanation": "\"Playground\" odnosi się do rozproszonej ścieżki zakupowej, gdzie klient eksploruje różne platformy i touchpointy przed podjęciem decyzji."
+    },
+    {
+      "id": 18,
+      "category": "Nowa era marketingu",
+      "question": "Według materiałów, w 2026 roku polityki platform social media (Meta, TikTok, YouTube) koncentrują się na:",
+      "options": {
+        "a": "Automatycznych etykietach \"AI Info\", wykrywaniu AI-generowanych treści",
+        "b": "Całkowitym zakazie używania AI w contencie",
+        "c": "Promowaniu wyłącznie treści stworzonych przez ludzi",
+        "d": "Ignorowaniu kwestii AI w treściach użytkowników"
+      },
+      "correct_answer": "a",
+      "explanation": "Platformy wprowadzają obowiązkowe etykiety AI Info, wymagają oznaczania treści AI-generowanych i stosują algorytmiczną detekcję."
+    },
+    {
+      "id": 19,
+      "category": "Nowa era marketingu",
+      "question": "Transformacja z marketingu \"brand-focused\" na \"creator-focused\" oznacza:",
+      "options": {
+        "a": "Całkowite porzucenie budowania marki",
+        "b": "Skupienie się na indywidualnych twórcach treści jako ambasadorach marki",
+        "c": "Tworzenie treści tylko przez CEO firmy",
+        "d": "Wykorzystywanie wyłącznie influencerów mega-celebrytów"
+      },
+      "correct_answer": "b",
+      "explanation": "Marketing creator-focused stawia na autentyczność indywidualnych twórców i ekspertów jako głównych nośników przekazu marki."
+    },
+    {
+      "id": 20,
+      "category": "Nowa era marketingu",
+      "question": "Czym są modele dyfuzyjne (diffusion models) w kontekście AI?",
+      "options": {
+        "a": "Modele językowe służące do tłumaczenia tekstów",
+        "b": "Modele generujące obrazy poprzez stopniowe usuwanie szumu z losowych danych",
+        "c": "Narzędzia do analizy danych finansowych",
+        "d": "Algorytmy do optymalizacji kampanii reklamowych"
+      },
+      "correct_answer": "b",
+      "explanation": "Modele dyfuzyjne (jak Stable Diffusion, DALL-E) generują obrazy poprzez uczenie się stopniowego przekształcania szumu w spójne obrazy."
+    },
+    {
+      "id": 21,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Przy tworzeniu asystenta AI, który z elementów kontekstu jest NAJWAŻNIEJSZY dla personalizacji odpowiedzi?",
+      "options": {
+        "a": "Logo firmy",
+        "b": "Kolory firmowe",
+        "c": "Adres biura",
+        "d": "Buyer persony z szczegółowym opisem klientów docelowych"
+      },
+      "correct_answer": "d",
+      "explanation": "Szczegółowe buyer persony pozwalają AI na dostosowanie tonu, języka i treści do konkretnej grupy docelowej."
+    },
+    {
+      "id": 22,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Co oznaczają \"halucynacje\" (hallucinations) w kontekście modeli AI?",
+      "options": {
+        "a": "Generowanie przez model fałszywych, nieprawdziwych lub zmyślonych informacji przedstawianych jako fakty",
+        "b": "Błędy w kodzie programu AI",
+        "c": "Problemy z wyświetlaniem grafiki przez model",
+        "d": "Zbyt długi czas przetwarzania zapytania"
+      },
+      "correct_answer": "a",
+      "explanation": "Halucynacje to sytuacja, gdy model AI generuje informacje, które brzmią wiarygodnie, ale są całkowicie zmyślone lub nieprawdziwe."
+    },
+    {
+      "id": 23,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Główny problem generycznego AI prospectingu, który powoduje jego porażkę to:",
+      "options": {
+        "a": "Zbyt wysokie koszty",
+        "b": "Brak dostępu do najnowszych modeli",
+        "c": "Generyczny output - wszystkie maile brzmią tak samo",
+        "d": "Wolna szybkość generowania"
+      },
+      "correct_answer": "c",
+      "explanation": "Problem generycznego AI prospectingu polega na tym, że przy podstawowych danych wszystkie wiadomości brzmią podobnie i tracą efektywność."
+    },
+    {
+      "id": 24,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Czym są biasy w kontekście AI i marketingu?",
+      "options": {
+        "a": "Narzędzia do analizy konkurencji",
+        "b": "Metryki efektywności kampanii marketingowych",
+        "c": "Formaty reklamowe w mediach społecznościowych",
+        "d": "Systematyczne błędy lub uprzedzenia w danych treningowych lub algorytmach prowadzące do niesprawiedliwych wyników"
+      },
+      "correct_answer": "d",
+      "explanation": "Biasy to systematyczne uprzedzenia w modelach AI wynikające z danych treningowych, które mogą prowadzić do dyskryminujących lub niesprawiedliwych wyników."
+    },
+    {
+      "id": 25,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Która strategia jest rekomendowana przy wyborze między modelami zamkniętymi (API) a Open-Source?",
+      "options": {
+        "a": "Modele zamknięte dla szybkiego wdrożenia, Open-Source dla pełnej kontroli i suwerenności",
+        "b": "Zawsze wybierać najtańsze rozwiązanie",
+        "c": "Używać wyłącznie Open-Source ze względów bezpieczeństwa",
+        "d": "Korzystać tylko z modeli największych firm jak OpenAI i Google"
+      },
+      "correct_answer": "a",
+      "explanation": "Wybór zależy od strategii biznesowej: modele zamknięte (API) oferują szybkie wdrożenie i dostęp do najnowszych technologii, podczas gdy Open-Source zapewnia pełną kontrolę nad danymi, suwerenność technologiczną i brak uzależnienia od dostawcy."
+    },
+    {
+      "id": 26,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Co oznacza anonimizacja danych w kontekście pracy z AI i ochrony prywatności?",
+      "options": {
+        "a": "Ukrywanie nazwy firmy w dokumentach marketingowych",
+        "b": "Szyfrowanie plików przed wysłaniem do chmury",
+        "c": "Tworzenie kopii zapasowych wrażliwych danych",
+        "d": "Usuwanie lub modyfikacja danych osobowych tak, aby nie można było zidentyfikować konkretnych osób"
+      },
+      "correct_answer": "d",
+      "explanation": "Anonimizacja danych to proces nieodwracalnego usunięcia lub modyfikacji informacji umożliwiających identyfikację konkretnych osób. Jest kluczowa przy pracy z AI i spełnianiu wymagań RODO/GDPR."
+    },
+    {
+      "id": 27,
+      "category": "Zaawansowane koncepcje AI",
+      "question": "Jaką rolę pełnią archetypy marki w tworzeniu treści marketingowych z AI?",
+      "options": {
+        "a": "Określają kolory i czcionki używane w materiałach",
+        "b": "Służą wyłącznie do analizy konkurencji",
+        "c": "Pomagają zdefiniować ton głosu i styl komunikacji marki, co umożliwia spójne promptowanie AI",
+        "d": "Zastępują tradycyjną strategię marketingową"
+      },
+      "correct_answer": "c",
+      "explanation": "Archetypy marki pomagają określić osobowość marki i styl komunikacji. W kontekście AI są kluczowe dla definiowania tonu w promptach i zapewnienia spójności wszystkich treści generowanych przez AI."
+    }
+  ]
+}
