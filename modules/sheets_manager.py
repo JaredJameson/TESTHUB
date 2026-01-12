@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 from functools import wraps
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 import pandas as pd
 import streamlit as st
 
@@ -63,7 +63,7 @@ class SheetsManager:
         # Load credentials from Streamlit secrets
         creds_dict = dict(st.secrets['google_sheets'])
 
-        credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+        credentials = Credentials.from_service_account_info(creds_dict, scopes=scope)
         return gspread.authorize(credentials)
 
     @retry_on_failure(max_attempts=3, delay=2, backoff='exponential')
