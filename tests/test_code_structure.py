@@ -24,12 +24,12 @@ def test_file_structure():
         'modules/email_service.py',
         'modules/analytics.py',
         'modules/ui_components.py',
-        'pages/1_Student_Login.py',
-        'pages/2_Student_Test.py',
-        'pages/3_Student_Results.py',
-        'pages/4_Teacher_Login.py',
-        'pages/5_Teacher_Dashboard.py',
-        'pages/6_Teacher_Details.py',
+        'pages/1_Logowanie_Studenta.py',
+        'pages/2_Test_Studenta.py',
+        'pages/3_Wyniki_Studenta.py',
+        'pages/4_Panel_Nauczyciela.py',
+        'pages/5_Dashboard_Nauczyciela.py',
+        'pages/6_Szczegoly_Studenta.py',
     ]
 
     missing = []
@@ -225,12 +225,12 @@ def test_pages_structure():
 
     pages = [
         'app.py',
-        'pages/1_Student_Login.py',
-        'pages/2_Student_Test.py',
-        'pages/3_Student_Results.py',
-        'pages/4_Teacher_Login.py',
-        'pages/5_Teacher_Dashboard.py',
-        'pages/6_Teacher_Details.py',
+        'pages/1_Logowanie_Studenta.py',
+        'pages/2_Test_Studenta.py',
+        'pages/3_Wyniki_Studenta.py',
+        'pages/4_Panel_Nauczyciela.py',
+        'pages/5_Dashboard_Nauczyciela.py',
+        'pages/6_Szczegoly_Studenta.py',
     ]
 
     results = []
