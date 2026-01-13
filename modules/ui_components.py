@@ -5,6 +5,34 @@ Implements brutalist design system from UI/UX guidelines
 
 import streamlit as st
 
+def hide_navigation_for_user():
+    """
+    Hide navigation sidebar based on user authentication and type
+    - Hides all navigation for non-authenticated users
+    - Hides teacher pages for students
+    """
+    if 'authenticated' not in st.session_state or not st.session_state.authenticated:
+        # Hide entire navigation for non-authenticated users
+        st.markdown("""
+        <style>
+        [data-testid="stSidebarNav"] {
+            display: none;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+    elif st.session_state.get('user_type') == 'student':
+        # Hide teacher pages for students
+        st.markdown("""
+        <style>
+        [data-testid="stSidebarNav"] li:has(a[href*="Panel_Nauczyciela"]),
+        [data-testid="stSidebarNav"] li:has(a[href*="Dashboard_Nauczyciela"]),
+        [data-testid="stSidebarNav"] li:has(a[href*="Szczegoly_Studenta"]) {
+            display: none;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+
 def load_custom_css():
     """
     Load custom CSS to override Streamlit defaults

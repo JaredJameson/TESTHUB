@@ -3,7 +3,7 @@ Student Results Page - Display Test Results
 """
 
 import streamlit as st
-from modules.ui_components import load_custom_css, status_badge, custom_card, section_divider
+from modules.ui_components import load_custom_css, hide_navigation_for_user, status_badge, custom_card, section_divider
 from modules.auth import AuthManager
 from modules.test_engine import TestEngine
 from modules.email_service import EmailService
@@ -16,6 +16,7 @@ st.set_page_config(
 )
 
 load_custom_css()
+hide_navigation_for_user()
 auth = AuthManager()
 test_engine = TestEngine()
 email_service = EmailService()
