@@ -151,8 +151,10 @@ show_details = st.checkbox("Pokaż szczegóły wszystkich pytań")
 if show_details:
     details = results.get('details', {})
 
-    for q_id in sorted([int(k) for k in details.keys()]):
-        detail = details[str(q_id)]
+    # Sort by question number, preserving original key type
+    for key in sorted(details.keys(), key=lambda x: int(x)):
+        detail = details[key]
+        q_id = int(key)
         is_correct = detail['is_correct']
 
         # Status badge and color
