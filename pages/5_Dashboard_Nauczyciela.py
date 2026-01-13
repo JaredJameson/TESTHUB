@@ -174,32 +174,40 @@ with col3:
     )
 
 with col4:
-    # Custom refresh icon button
+    st.markdown('<div style="height: 8px;"></div>', unsafe_allow_html=True)
+
+    # Custom styled refresh button with SVG icon
+    refresh_clicked = st.button(
+        "⟳",
+        use_container_width=True,
+        key="refresh_button",
+        help="Odśwież dane"
+    )
+
+    # Custom CSS for this specific button
     st.markdown("""
     <style>
-    .refresh-btn {
-        background: #FFD700;
-        border: 1px solid #000000;
-        border-radius: 8px;
-        width: 100%;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-size: 24px;
+    /* Style refresh button */
+    div[data-testid="column"]:nth-child(4) button[kind="secondary"] {
+        background: #FFD700 !important;
+        border: 1px solid #000000 !important;
+        border-radius: 8px !important;
+        height: 48px !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     }
-    .refresh-btn:hover {
-        background: #FFC700;
-        transform: rotate(90deg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    div[data-testid="column"]:nth-child(4) button[kind="secondary"]:hover {
+        background: #FFC700 !important;
+        transform: rotate(90deg) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-    if st.button("🔄", use_container_width=True, key="refresh_button"):
+    if refresh_clicked:
         st.cache_data.clear()
         st.rerun()
 
