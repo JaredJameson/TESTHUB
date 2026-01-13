@@ -40,8 +40,8 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown(f"""
-    <div style="background: #FFFFFF; border: 2px solid #000000; padding: 20px; text-align: center;">
-        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Wszystkie Testy</div>
+    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;">
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #666;">Wszystkie Testy</div>
         <div style="font-size: 36px; font-weight: 700;">{global_stats['total_tests']}</div>
     </div>
     """, unsafe_allow_html=True)
@@ -49,24 +49,24 @@ with col1:
 with col2:
     pass_color = "#2D5016" if global_stats['pass_rate'] >= 70 else "#FFD700" if global_stats['pass_rate'] >= 50 else "#8B0000"
     st.markdown(f"""
-    <div style="background: #FFFFFF; border: 2px solid #000000; padding: 20px; text-align: center;">
-        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Wskaźnik Zdawalności</div>
+    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;">
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #666;">Wskaźnik Zdawalności</div>
         <div style="font-size: 36px; font-weight: 700; color: {pass_color};">{global_stats['pass_rate']}%</div>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown(f"""
-    <div style="background: #FFFFFF; border: 2px solid #000000; padding: 20px; text-align: center;">
-        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Średni Wynik</div>
+    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;">
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #666;">Średni Wynik</div>
         <div style="font-size: 36px; font-weight: 700;">{global_stats['average_score']}%</div>
     </div>
     """, unsafe_allow_html=True)
 
 with col4:
     st.markdown(f"""
-    <div style="background: #FFFFFF; border: 2px solid #000000; padding: 20px; text-align: center;">
-        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Średnia Ocena</div>
+    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;">
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #666;">Średnia Ocena</div>
         <div style="font-size: 36px; font-weight: 700;">{global_stats['average_grade']}</div>
     </div>
     """, unsafe_allow_html=True)
@@ -89,13 +89,13 @@ if category_analysis:
             color = "#8B0000"
 
         st.markdown(f"""
-        <div style="background: #FFFFFF; border: 1px solid #000000; padding: 16px; margin-bottom: 12px;">
+        <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); transition: all 0.2s ease;" onmouseover="this.style.transform='translateX(4px)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.1)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="flex: 1;">
                     <div style="font-weight: 600; font-size: 16px; margin-bottom: 8px;">{category}</div>
                     <div style="display: flex; align-items: center; gap: 16px;">
-                        <div style="flex: 1; background: #F5F5F5; border: 1px solid #000000; height: 24px;">
-                            <div style="background: {color}; width: {percentage}%; height: 100%;"></div>
+                        <div style="flex: 1; background: #E0E0E0; border-radius: 10px; height: 24px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, {color} 0%, {color}dd 100%); width: {percentage}%; height: 100%; transition: width 0.3s ease;"></div>
                         </div>
                         <div style="font-weight: 600; color: {color}; min-width: 100px; text-align: right;">
                             {stats['average_correct']:.1f}/{stats['total_questions']} ({percentage}%)
@@ -129,7 +129,7 @@ if hardest_questions:
             color = "#8B0000"
 
         st.markdown(f"""
-        <div style="background: #FFFFFF; border: 1px solid #000000; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 8px; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); transition: all 0.2s ease;" onmouseover="this.style.transform='translateX(4px)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.1)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';">
             <div>
                 <span style="font-weight: 600;">Pytanie #{q['question_id']}</span> - {q['category']}
             </div>
@@ -173,7 +173,32 @@ with col3:
     )
 
 with col4:
-    if st.button("🔄 Odśwież", use_container_width=True):
+    # Custom refresh icon button
+    st.markdown("""
+    <style>
+    .refresh-btn {
+        background: #FFD700;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 100%;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 24px;
+    }
+    .refresh-btn:hover {
+        background: #FFC700;
+        transform: rotate(90deg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    if st.button("🔄", use_container_width=True, key="refresh_button"):
         st.cache_data.clear()
         st.rerun()
 
@@ -215,7 +240,7 @@ if not df.empty:
         status_emoji = "✅" if passed else "❌"
 
         st.markdown(f"""
-        <div style="background: #FFFFFF; border: 2px solid {border_color}; padding: 16px; margin-bottom: 12px;">
+        <div style="background: #FFFFFF; border-left: 4px solid {border_color}; border: 1px solid #E0E0E0; border-left: 4px solid {border_color}; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0, 0, 0, 0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.08)';">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="flex: 1;">
                     <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">

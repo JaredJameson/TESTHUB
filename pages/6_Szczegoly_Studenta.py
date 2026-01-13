@@ -58,17 +58,17 @@ if 'search_email' in st.session_state and st.session_state.search_email:
         status_emoji = "✅" if passed else "❌"
 
         st.markdown(f"""
-        <div style="background: #FFFFFF; border: 3px solid {status_color}; padding: 32px; text-align: center; margin-bottom: 24px;">
-            <div style="font-size: 36px; font-weight: 700; color: {status_color}; margin-bottom: 16px;">
+        <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF0 100%); border-left: 6px solid {status_color}; border: 1px solid #E0E0E0; border-left: 6px solid {status_color}; border-radius: 16px; padding: 32px; text-align: center; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); animation: fadeIn 0.5s ease-out;">
+            <div style="font-size: 36px; font-weight: 700; color: {status_color}; margin-bottom: 16px; animation: slideIn 0.4s ease-out;">
                 {status_emoji} {status_text}
             </div>
             <div style="font-size: 48px; font-weight: 700; color: #000000; margin-bottom: 8px;">
                 {result_data['Percentage']}%
             </div>
-            <div style="font-size: 20px; margin-bottom: 16px;">
+            <div style="font-size: 20px; color: #666; margin-bottom: 16px;">
                 {result_data['Correct_Count']}/27 poprawnych odpowiedzi
             </div>
-            <div style="font-size: 18px; padding: 12px 24px; background: #F5F5F5; border: 1px solid #000000; display: inline-block;">
+            <div style="font-size: 18px; padding: 12px 24px; background: #F5F5F5; border: 1px solid #E0E0E0; border-radius: 24px; display: inline-block; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
                 Ocena: {result_data['Grade']} - {result_data['Grade_Text']}
             </div>
         </div>
@@ -112,11 +112,11 @@ if 'search_email' in st.session_state and st.session_state.search_email:
                     color = "#8B0000"
 
                 st.markdown(f"""
-                <div style="background: #FFFFFF; border: 1px solid #000000; padding: 16px; margin-bottom: 16px;">
+                <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 10px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); transition: all 0.2s ease;" onmouseover="this.style.transform='translateX(4px)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.1)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';">
                     <div style="font-weight: 600; font-size: 18px; margin-bottom: 8px;">{category}</div>
                     <div style="display: flex; align-items: center; gap: 16px;">
-                        <div style="flex: 1; background: #F5F5F5; border: 1px solid #000000; height: 24px;">
-                            <div style="background: {color}; width: {percentage}%; height: 100%;"></div>
+                        <div style="flex: 1; background: #E0E0E0; border-radius: 10px; height: 24px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, {color} 0%, {color}dd 100%); width: {percentage}%; height: 100%; transition: width 0.3s ease;"></div>
                         </div>
                         <div style="font-weight: 600; color: {color}; min-width: 100px; text-align: right;">
                             {correct}/{total} ({percentage}%)
@@ -150,22 +150,22 @@ if 'search_email' in st.session_state and st.session_state.search_email:
 
                     if question:
                         st.markdown(f"""
-                        <div style="background: #FFFFFF; border: 2px solid {border_color}; padding: 20px; margin-bottom: 16px;">
+                        <div style="background: #FFFFFF; border-left: 4px solid {border_color}; border: 1px solid #E0E0E0; border-left: 4px solid {border_color}; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.08)';">
                             <div style="font-weight: 600; font-size: 16px; margin-bottom: 12px;">
                                 {icon} Pytanie {q_id}: {answer_data.get('category', 'Unknown')}
                             </div>
                             <div style="margin-bottom: 12px; color: #000000;">
                                 {question['question']}
                             </div>
-                            <div style="background: #F5F5F5; padding: 12px; border: 1px solid #000000; margin-bottom: 8px;">
+                            <div style="background: #F5F5F5; padding: 12px; border: 1px solid #E0E0E0; border-radius: 8px; margin-bottom: 8px;">
                                 <strong>Odpowiedź studenta:</strong> {answer_data.get('selected', 'Brak odpowiedzi').upper()}
                                 {f"- {question['options'].get(answer_data.get('selected', ''), '')}" if answer_data.get('selected') else ''}
                             </div>
-                            <div style="background: #E8F5E9; padding: 12px; border: 1px solid {border_color}; margin-bottom: 8px;">
+                            <div style="background: #E8F5E9; padding: 12px; border: 1px solid {border_color}; border-radius: 8px; margin-bottom: 8px;">
                                 <strong>Poprawna odpowiedź:</strong> {answer_data.get('correct', '').upper()}
                                 {f"- {question['options'].get(answer_data.get('correct', ''), '')}" if answer_data.get('correct') else ''}
                             </div>
-                            {f'<div style="padding: 8px; color: #000000; font-size: 14px;"><em><strong>Wyjaśnienie:</strong> {question.get("explanation", "")}</em></div>' if question.get('explanation') else ''}
+                            {f'<div style="padding: 8px; color: #666; font-size: 14px;"><em><strong>Wyjaśnienie:</strong> {question.get("explanation", "")}</em></div>' if question.get('explanation') else ''}
                         </div>
                         """, unsafe_allow_html=True)
 
