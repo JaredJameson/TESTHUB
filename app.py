@@ -28,12 +28,36 @@ sheets_manager = SheetsManager()
 if auth.is_authenticated():
     user_type = st.session_state.user_type
     if user_type == "student":
-        st.success(f"Zalogowano jako: {st.session_state.first_name} {st.session_state.last_name}")
-        if st.button("Rozpocznij Test", use_container_width=True):
+        # Compact student welcome screen
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF0 100%);
+             border-left: 6px solid #2D5016;
+             border-radius: 12px;
+             padding: 32px;
+             margin: 40px 0 32px 0;
+             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+            <h2 style="margin: 0 0 8px 0; color: #000000;">Witaj, {st.session_state.first_name} {st.session_state.last_name}!</h2>
+            <p style="margin: 0; color: #666; font-size: 16px;">Gotowy/a do rozpoczęcia testu?</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("🚀 Rozpocznij Test", use_container_width=True, type="primary"):
             st.switch_page("pages/2_Test_Studenta.py")
     else:
-        st.success(f"Zalogowano jako nauczyciel: {st.session_state.email}")
-        if st.button("Przejdź do Dashboard", use_container_width=True):
+        # Compact teacher welcome screen
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF8E1 100%);
+             border-left: 6px solid #FFD700;
+             border-radius: 12px;
+             padding: 32px;
+             margin: 40px 0 32px 0;
+             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+            <h2 style="margin: 0 0 8px 0; color: #000000;">Panel Nauczyciela</h2>
+            <p style="margin: 0; color: #666; font-size: 16px;">{st.session_state.email}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("📊 Przejdź do Dashboard", use_container_width=True, type="primary"):
             st.switch_page("pages/5_Dashboard_Nauczyciela.py")
     st.stop()
 

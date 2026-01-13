@@ -390,7 +390,7 @@ def status_badge(passed: bool) -> str:
 
 def section_divider():
     """Add section divider (subtle line)"""
-    st.markdown('<hr style="border: none; border-top: 1px solid #E0E0E0; margin: 48px 0;">', unsafe_allow_html=True)
+    st.markdown('<hr style="border: none; border-top: 1px solid #E0E0E0; margin: 20px 0;">', unsafe_allow_html=True)
 
 
 def progress_bar(current: int, total: int):
