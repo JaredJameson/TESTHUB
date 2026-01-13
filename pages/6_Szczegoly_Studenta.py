@@ -4,7 +4,7 @@ Teacher Details - Individual Student Result View
 
 import streamlit as st
 import json
-from modules.ui_components import load_custom_css, section_divider
+from modules.ui_components import load_custom_css, section_divider, hide_navigation_for_user
 from modules.auth import AuthManager
 from modules.sheets_manager import SheetsManager
 from modules.test_engine import TestEngine
@@ -17,6 +17,7 @@ st.set_page_config(
 )
 
 load_custom_css()
+hide_navigation_for_user()
 auth = AuthManager()
 sheets_manager = SheetsManager()
 test_engine = TestEngine()

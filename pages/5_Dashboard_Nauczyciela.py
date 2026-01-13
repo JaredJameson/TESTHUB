@@ -5,7 +5,7 @@ Teacher Dashboard - View All Student Results
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from modules.ui_components import load_custom_css, section_divider
+from modules.ui_components import load_custom_css, section_divider, hide_navigation_for_user
 from modules.auth import AuthManager
 from modules.sheets_manager import SheetsManager
 from modules.analytics import Analytics
@@ -18,6 +18,7 @@ st.set_page_config(
 )
 
 load_custom_css()
+hide_navigation_for_user()
 auth = AuthManager()
 sheets_manager = SheetsManager()
 analytics = Analytics(sheets_manager)
