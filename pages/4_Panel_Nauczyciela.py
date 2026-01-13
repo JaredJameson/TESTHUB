@@ -25,7 +25,7 @@ st.markdown("---")
 if auth.is_authenticated() and st.session_state.user_type == "teacher":
     st.success(f"Zalogowano jako: {st.session_state.email}")
     if st.button("Przejdź do Dashboard"):
-        st.switch_page("pages/5_Teacher_Dashboard.py")
+        st.switch_page("pages/5_Dashboard_Nauczyciela.py")
     st.stop()
 
 # Login form

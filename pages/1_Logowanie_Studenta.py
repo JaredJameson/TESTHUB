@@ -25,7 +25,7 @@ st.markdown("---")
 if auth.is_authenticated() and st.session_state.user_type == "student":
     st.success(f"Zalogowano jako: {st.session_state.first_name} {st.session_state.last_name}")
     if st.button("Rozpocznij Test"):
-        st.switch_page("pages/2_Student_Test.py")
+        st.switch_page("pages/2_Test_Studenta.py")
     st.stop()
 
 # Login form

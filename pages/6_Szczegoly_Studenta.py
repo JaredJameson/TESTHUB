@@ -195,7 +195,7 @@ if 'search_email' in st.session_state and st.session_state.search_email:
         with col1:
             if st.button("← Powrót do dashboardu", use_container_width=True):
                 del st.session_state.search_email
-                st.switch_page("pages/5_Teacher_Dashboard.py")
+                st.switch_page("pages/5_Dashboard_Nauczyciela.py")
 
         with col2:
             if st.button("Wyloguj się", use_container_width=True):
@@ -207,10 +207,10 @@ if 'search_email' in st.session_state and st.session_state.search_email:
 
         if st.button("← Powrót do dashboardu", use_container_width=True):
             del st.session_state.search_email
-            st.switch_page("pages/5_Teacher_Dashboard.py")
+            st.switch_page("pages/5_Dashboard_Nauczyciela.py")
 
 else:
     st.info("👆 Wprowadź email studenta aby zobaczyć szczegółowe wyniki")
 
     if st.button("← Powrót do dashboardu", use_container_width=True):
-        st.switch_page("pages/5_Teacher_Dashboard.py")
+        st.switch_page("pages/5_Dashboard_Nauczyciela.py")

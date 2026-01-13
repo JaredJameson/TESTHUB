@@ -51,7 +51,7 @@ if 'test_questions' not in st.session_state:
 
     if st.button("← Wyloguj się"):
         auth.logout()
-        st.switch_page("pages/1_Student_Login.py")
+        st.switch_page("pages/1_Logowanie_Studenta.py")
 
     st.stop()
 
@@ -59,7 +59,7 @@ if 'test_questions' not in st.session_state:
 if st.session_state.get('test_completed', False):
     st.success("Test został już ukończony!")
     if st.button("Zobacz Wyniki"):
-        st.switch_page("pages/3_Student_Results.py")
+        st.switch_page("pages/3_Wyniki_Studenta.py")
     st.stop()
 
 # Check for timeout
@@ -107,7 +107,7 @@ if test_engine.is_time_up() and not st.session_state.get('test_completed', False
         st.error("Błąd zapisu wyników. Skontaktuj się z nauczycielem.")
 
     time.sleep(2)
-    st.switch_page("pages/3_Student_Results.py")
+    st.switch_page("pages/3_Wyniki_Studenta.py")
     st.stop()
 
 # Main test interface
@@ -197,7 +197,7 @@ with col1:
 with col2:
     if st.button("Wyloguj się"):
         auth.logout()
-        st.switch_page("pages/1_Student_Login.py")
+        st.switch_page("pages/1_Logowanie_Studenta.py")
 
 with col3:
     if current_q_index < total_questions - 1:

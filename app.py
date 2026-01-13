@@ -39,11 +39,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     if st.button("Jestem Studentem", use_container_width=True):
-        st.switch_page("pages/1_Student_Login.py")
+        st.switch_page("pages/1_Logowanie_Studenta.py")
 
 with col2:
     if st.button("Jestem Nauczycielem", use_container_width=True):
-        st.switch_page("pages/4_Teacher_Login.py")
+        st.switch_page("pages/4_Panel_Nauczyciela.py")
 
 # Footer
 st.markdown("---")

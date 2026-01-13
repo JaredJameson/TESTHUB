@@ -27,7 +27,7 @@ auth.require_authentication(user_type="student")
 if not st.session_state.get('test_completed', False):
     st.warning("Test nie został jeszcze ukończony")
     if st.button("Powrót do testu"):
-        st.switch_page("pages/2_Student_Test.py")
+        st.switch_page("pages/2_Test_Studenta.py")
     st.stop()
 
 # Calculate results if not already done
