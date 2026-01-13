@@ -87,7 +87,7 @@ if email:
 
     if is_teacher:
         # Teacher login form
-        st.info("👨‍🏫 Wykryto konto nauczyciela")
+        st.info("Wykryto konto nauczyciela")
 
         with st.form("teacher_login_form"):
             password = st.text_input(
@@ -111,7 +111,7 @@ if email:
                         st.error(message)
     else:
         # Student login form
-        st.info("👨‍🎓 Logowanie jako student")
+        st.info("Logowanie jako student")
 
         with st.form("student_login_form"):
             first_name = st.text_input(

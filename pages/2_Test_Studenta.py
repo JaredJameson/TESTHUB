@@ -41,7 +41,7 @@ if 'test_questions' not in st.session_state:
     - **Format:** Pytania jednokrotnego wyboru
     """)
 
-    st.warning("⚠️ Po rozpoczęciu testu timer będzie odliczał czas. Test zostanie automatycznie wysłany po upływie 30 minut.")
+    st.warning("Po rozpoczęciu testu timer będzie odliczał czas. Test zostanie automatycznie wysłany po upływie 30 minut.")
 
     if st.button("Rozpocznij Test", use_container_width=True):
         if test_engine.initialize_test(randomize=False):
@@ -210,7 +210,7 @@ with col3:
         if st.button("Zakończ Test", use_container_width=True, type="primary"):
             # Check if all questions answered
             if test_engine.get_answered_count() < total_questions:
-                st.warning(f"⚠️ Odpowiedziałeś na {test_engine.get_answered_count()}/{total_questions} pytań. Czy na pewno chcesz zakończyć test?")
+                st.warning(f"Odpowiedziałeś na {test_engine.get_answered_count()}/{total_questions} pytań. Czy na pewno chcesz zakończyć test?")
 
                 if st.button("Tak, zakończ test"):
                     st.session_state.test_completed = True

@@ -246,14 +246,14 @@ if not df.empty:
     for idx, row in df.iterrows():
         passed = row['Status'] == 'ZALICZONY'
         border_color = "#2D5016" if passed else "#8B0000"
-        status_emoji = "✅" if passed else "❌"
+        status_badge = f'<span style="background: #2D5016; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 8px;">ZALICZONY</span>' if passed else f'<span style="background: #8B0000; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 8px;">NIEZALICZONY</span>'
 
         st.markdown(f"""
         <div style="background: #FFFFFF; border-left: 4px solid {border_color}; border: 1px solid #E0E0E0; border-left: 4px solid {border_color}; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0, 0, 0, 0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.08)';">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="flex: 1;">
                     <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">
-                        {status_emoji} {row['First_Name']} {row['Last_Name']}
+                        {status_badge} {row['First_Name']} {row['Last_Name']}
                     </div>
                     <div style="font-size: 14px; color: #666; margin-bottom: 4px;">
                         {row['Email']} {f"| ID: {row['Student_ID']}" if row.get('Student_ID') else ''}
@@ -272,7 +272,7 @@ if not df.empty:
                     <div style="font-size: 14px; color: #666;">
                         {row['Correct_Count']}/27 poprawnych | {row['Time_Spent_Minutes']} min
                     </div>
-                    {f'<div style="font-size: 12px; color: #8B0000; margin-top: 4px;">⏰ Auto-submit</div>' if row.get('Auto_Submitted') else ''}
+                    {f'<div style="font-size: 12px; color: #8B0000; margin-top: 4px;">Wysłano automatycznie</div>' if row.get('Auto_Submitted') else ''}
                 </div>
             </div>
         </div>

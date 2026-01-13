@@ -105,7 +105,7 @@ st.markdown(f"**Czas rozwiązywania:** {time_minutes} min {time_seconds} sek")
 
 # Auto-submitted info
 if st.session_state.get('auto_submitted', False):
-    st.info("ℹ️ Test został automatycznie wysłany po upływie czasu")
+    st.info("Test został automatycznie wysłany po upływie czasu")
 
 section_divider()
 
@@ -155,14 +155,14 @@ if show_details:
         detail = details[str(q_id)]
         is_correct = detail['is_correct']
 
-        # Icon and color
-        icon = "✅" if is_correct else "❌"
+        # Status badge and color
+        status_badge = f'<span style="background: #2D5016; color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">POPRAWNE</span>' if is_correct else f'<span style="background: #8B0000; color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NIEPOPRAWNE</span>'
         border_color = "#2D5016" if is_correct else "#8B0000"
 
         st.markdown(f"""
         <div style="background: #FFFFFF; border-left: 4px solid {border_color}; border: 1px solid #E0E0E0; border-left: 4px solid {border_color}; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.08)';">
             <div style="font-weight: 600; font-size: 16px; margin-bottom: 12px;">
-                {icon} Pytanie {q_id}: {detail['category']}
+                {status_badge} Pytanie {q_id}: {detail['category']}
             </div>
             <div style="margin-bottom: 12px; color: #000000;">
                 {detail['question']}
@@ -195,4 +195,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.info("📧 Wyniki zostały zapisane i będą dostępne dla nauczyciela. Otrzymasz również email z potwierdzeniem.")
+st.info("Wyniki zostały zapisane i będą dostępne dla nauczyciela. Otrzymasz również email z potwierdzeniem.")
