@@ -45,12 +45,12 @@ def load_custom_css():
         }
         '''
 
-    css = f'''
+    css = '''
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     /* Navigation Hiding */
-    {hide_nav_css}
+    ''' + hide_nav_css + '''
 
     /* Keyframe Animations */
     @keyframes fadeIn {
