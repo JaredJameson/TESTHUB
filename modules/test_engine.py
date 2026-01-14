@@ -66,9 +66,9 @@ class TestEngine:
             st.session_state.test_completed = False
             st.session_state.auto_saves = []
 
-            # Per-question timing (20 seconds per question)
+            # Per-question timing (30 seconds per question)
             st.session_state.question_start_time = time.time()
-            st.session_state.question_time_limit = 20  # 20 seconds per question
+            st.session_state.question_time_limit = 30  # 30 seconds per question
             st.session_state.locked_questions = set()  # Track locked questions
 
             return True

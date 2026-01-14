@@ -39,7 +39,7 @@ if 'test_questions' not in st.session_state:
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("**Czas na pytanie:** 20 sekund")
+        st.markdown("**Czas na pytanie:** 30 sekund")
         st.markdown("**Próg zaliczenia:** 48% (13/27)")
     with col2:
         st.markdown("**Liczba pytań:** 27")
@@ -47,7 +47,7 @@ if 'test_questions' not in st.session_state:
 
     st.markdown("---")
 
-    st.warning("**UWAGA:** Na każde pytanie masz **20 sekund**. Po upływie czasu pytanie zostanie **automatycznie zablokowane** i musisz przejść do następnego.")
+    st.warning("**UWAGA:** Na każde pytanie masz **30 sekund**. Po upływie czasu pytanie zostanie **automatycznie zablokowane** i musisz przejść do następnego.")
 
     if st.button("Rozpocznij Test", use_container_width=True, type="primary"):
         if test_engine.initialize_test(randomize=False):
@@ -96,7 +96,7 @@ if is_locked:
 elif question_time_remaining <= 5:
     timer_color = "#8B0000"
     timer_text = f"{question_time_remaining}s"
-elif question_time_remaining <= 10:
+elif question_time_remaining <= 15:
     timer_color = "#FFD700"
     timer_text = f"{question_time_remaining}s"
 else:
