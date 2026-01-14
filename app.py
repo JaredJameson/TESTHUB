@@ -70,9 +70,10 @@ custom_card(
     """
     <ul>
         <li><strong>Liczba pytań:</strong> 27</li>
-        <li><strong>Czas trwania:</strong> 30 minut</li>
+        <li><strong>Czas na pytanie:</strong> 20 sekund</li>
         <li><strong>Próg zaliczenia:</strong> 48% (13 poprawnych odpowiedzi)</li>
         <li><strong>Format:</strong> Pytania jednokrotnego wyboru</li>
+        <li><strong>Blokowanie:</strong> Pytanie blokuje się automatycznie po 20 sekundach</li>
     </ul>
     """
 )

@@ -63,9 +63,13 @@ class TestEngine:
             st.session_state.test_answers = {}
             st.session_state.current_question = 0
             st.session_state.test_start_time = time.time()
-            st.session_state.test_duration = self.test_info.get('duration_minutes', 30) * 60
             st.session_state.test_completed = False
             st.session_state.auto_saves = []
+
+            # Per-question timing (20 seconds per question)
+            st.session_state.question_start_time = time.time()
+            st.session_state.question_time_limit = 20  # 20 seconds per question
+            st.session_state.locked_questions = set()  # Track locked questions
 
             return True
 
@@ -122,22 +126,59 @@ class TestEngine:
         answer_data = answers.get(question_id, {})
         return answer_data.get('selected', '')
 
+    def get_question_time_remaining(self) -> int:
+        """
+        Get remaining time for current question in seconds
+
+        Returns:
+            int: Seconds remaining for current question
+        """
+        start_time = st.session_state.get('question_start_time', time.time())
+        time_limit = st.session_state.get('question_time_limit', 20)
+        elapsed = time.time() - start_time
+        remaining = max(0, time_limit - elapsed)
+        return int(remaining)
+
+    def is_question_time_up(self) -> bool:
+        """Check if current question time has expired"""
+        return self.get_question_time_remaining() <= 0
+
+    def lock_current_question(self) -> None:
+        """Lock current question when time expires"""
+        current_q_idx = st.session_state.get('current_question', 0)
+        if 'locked_questions' not in st.session_state:
+            st.session_state.locked_questions = set()
+        st.session_state.locked_questions.add(current_q_idx)
+
+    def is_question_locked(self, question_index: int) -> bool:
+        """
+        Check if question is locked
+
+        Args:
+            question_index: Question index to check
+
+        Returns:
+            bool: True if question is locked
+        """
+        locked = st.session_state.get('locked_questions', set())
+        return question_index in locked
+
+    def reset_question_timer(self) -> None:
+        """Reset timer when moving to new question"""
+        st.session_state.question_start_time = time.time()
+
     def get_time_remaining(self) -> int:
         """
-        Get remaining time in seconds
+        Get remaining time in seconds (DEPRECATED - use get_question_time_remaining)
 
         Returns:
             int: Seconds remaining
         """
-        start_time = st.session_state.get('test_start_time', time.time())
-        duration = st.session_state.get('test_duration', 1800)
-        elapsed = time.time() - start_time
-        remaining = max(0, duration - elapsed)
-        return int(remaining)
+        return self.get_question_time_remaining()
 
     def is_time_up(self) -> bool:
-        """Check if time has expired"""
-        return self.get_time_remaining() <= 0
+        """Check if time has expired (DEPRECATED - use is_question_time_up)"""
+        return self.is_question_time_up()
 
     def format_time(self, seconds: int) -> str:
         """

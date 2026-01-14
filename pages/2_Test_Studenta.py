@@ -39,7 +39,7 @@ if 'test_questions' not in st.session_state:
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("**Czas trwania:** 30 minut")
+        st.markdown("**Czas na pytanie:** 20 sekund")
         st.markdown("**Próg zaliczenia:** 48% (13/27)")
     with col2:
         st.markdown("**Liczba pytań:** 27")
@@ -47,7 +47,7 @@ if 'test_questions' not in st.session_state:
 
     st.markdown("---")
 
-    st.warning("**UWAGA:** Timer uruchomi się automatycznie. Test zostanie wysłany po 30 minutach.")
+    st.warning("**UWAGA:** Na każde pytanie masz **20 sekund**. Po upływie czasu pytanie zostanie **automatycznie zablokowane** i musisz przejść do następnego.")
 
     if st.button("Rozpocznij Test", use_container_width=True, type="primary"):
         if test_engine.initialize_test(randomize=False):
@@ -69,57 +69,14 @@ if st.session_state.get('test_completed', False):
         st.switch_page("pages/3_Wyniki_Studenta.py")
     st.stop()
 
-# Check for timeout
-if test_engine.is_time_up() and not st.session_state.get('test_completed', False):
-    st.warning("⏰ Czas na test się skończył! Wysyłanie wyników...")
-    st.session_state.auto_submitted = True
-    st.session_state.test_completed = True
-
-    # Calculate and save results
-    results = test_engine.calculate_results()
-    student_data = {
-        'email': st.session_state.email,
-        'first_name': st.session_state.first_name,
-        'last_name': st.session_state.last_name,
-        'student_id': st.session_state.get('student_id', '')
-    }
-
-    formatted_results = test_engine.format_results_for_sheets(student_data, results)
-    st.session_state.test_results = results
-
-    # Save to Google Sheets
-    sheets = SheetsManager()
-    if sheets.save_test_result(formatted_results):
-        st.success("Wyniki zostały zapisane!")
-
-        # Send email notifications
-        student_full_name = f"{st.session_state.first_name} {st.session_state.last_name}"
-
-        # Send to student
-        email_service.send_student_result_email(
-            student_email=st.session_state.email,
-            student_name=student_full_name,
-            results=results,
-            async_send=True
-        )
-
-        # Send to teacher
-        email_service.send_teacher_notification_email(
-            student_name=student_full_name,
-            student_email=st.session_state.email,
-            results=results,
-            async_send=True
-        )
-    else:
-        st.error("Błąd zapisu wyników. Skontaktuj się z nauczycielem.")
-
-    time.sleep(2)
-    st.switch_page("pages/3_Wyniki_Studenta.py")
-    st.stop()
-
 # Main test interface
 current_q_index = st.session_state.get('current_question', 0)
 total_questions = test_engine.get_total_questions()
+
+# Check if current question time is up and lock it
+if test_engine.is_question_time_up() and not test_engine.is_question_locked(current_q_index):
+    test_engine.lock_current_question()
+    st.rerun()
 
 # Get current question first
 question = test_engine.get_question(current_q_index)
@@ -128,17 +85,30 @@ if not question:
     st.error("Błąd wczytywania pytania")
     st.stop()
 
-# Fixed timer in top right corner
-time_remaining = test_engine.get_time_remaining()
-time_str = test_engine.format_time(time_remaining)
-timer_color = "#8B0000" if time_remaining < 300 else "#2D5016"
+# Per-question timer in top right corner
+question_time_remaining = test_engine.get_question_time_remaining()
+is_locked = test_engine.is_question_locked(current_q_index)
+
+# Color based on time remaining
+if is_locked:
+    timer_color = "#8B0000"
+    timer_text = "ZABLOKOWANE"
+elif question_time_remaining <= 5:
+    timer_color = "#8B0000"
+    timer_text = f"{question_time_remaining}s"
+elif question_time_remaining <= 10:
+    timer_color = "#FFD700"
+    timer_text = f"{question_time_remaining}s"
+else:
+    timer_color = "#2D5016"
+    timer_text = f"{question_time_remaining}s"
 
 st.markdown(f"""
 <div style="position: fixed; top: 80px; right: 20px; z-index: 999;
      background: white; padding: 12px 20px; border-radius: 8px;
      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border: 2px solid {timer_color};">
-    <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Pozostały czas:</div>
-    <div style="font-size: 24px; font-weight: 700; color: {timer_color};">{time_str}</div>
+    <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Czas na pytanie:</div>
+    <div style="font-size: 24px; font-weight: 700; color: {timer_color};">{timer_text}</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -185,24 +155,30 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+# Show warning if question is locked
+if is_locked:
+    st.error("**Czas na to pytanie minął!** Pytanie zostało zablokowane. Przejdź do następnego pytania.")
+
 # Radio buttons with hidden label for accessibility
+# Disable if question is locked
 selected = st.radio(
     "Odpowiedzi",
     options=['a', 'b', 'c', 'd'],
     format_func=lambda x: f"{x}) {options_text[x]}",
     index=['a', 'b', 'c', 'd'].index(current_answer) if current_answer else None,
     key=f"q_{question['id']}",
-    label_visibility="collapsed"
+    label_visibility="collapsed",
+    disabled=is_locked
 )
 
 # Save answer when changed - use toast instead of info to avoid button duplication
-if selected and selected != current_answer:
+if not is_locked and selected and selected != current_answer:
     test_engine.save_answer(question['id'], selected)
 
     # Check for auto-save - use toast instead of st.info()
     if test_engine.should_auto_save():
         answered_count = test_engine.get_answered_count()
-        st.toast(f"💾 Auto-zapis: Zapisano postęp ({answered_count} pytań)", icon="✅")
+        st.toast(f"Auto-zapis: Zapisano postęp ({answered_count} pytań)", icon="✅")
         test_engine.mark_auto_saved(answered_count)
 
 # Navigation buttons
@@ -212,6 +188,7 @@ with col1:
     if current_q_index > 0:
         if st.button("← Poprzednie", use_container_width=True):
             st.session_state.current_question = current_q_index - 1
+            test_engine.reset_question_timer()
             st.rerun()
 
 with col2:
@@ -223,6 +200,7 @@ with col3:
     if current_q_index < total_questions - 1:
         if st.button("Następne →", use_container_width=True):
             st.session_state.current_question = current_q_index + 1
+            test_engine.reset_question_timer()
             st.rerun()
     else:
         # Last question - show submit button
