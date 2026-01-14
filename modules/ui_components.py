@@ -31,21 +31,21 @@ def load_custom_css():
     # Navigation hiding logic
     hide_nav_css = ""
     if 'authenticated' not in st.session_state or not st.session_state.authenticated:
-        hide_nav_css = """
+        hide_nav_css = '''
         [data-testid="stSidebarNav"] {
             display: none;
         }
-        """
+        '''
     elif st.session_state.get('user_type') == 'student':
-        hide_nav_css = """
+        hide_nav_css = '''
         [data-testid="stSidebarNav"] li:has(a[href*="Panel_Nauczyciela"]),
         [data-testid="stSidebarNav"] li:has(a[href*="Dashboard_Nauczyciela"]),
         [data-testid="stSidebarNav"] li:has(a[href*="Szczegoly_Studenta"]) {
             display: none;
         }
-        """
+        '''
 
-    css = f"""
+    css = f'''
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -329,7 +329,7 @@ def load_custom_css():
         transition: transform 0.3s ease;
     }
     </style>
-    """
+    '''
     st.markdown(css, unsafe_allow_html=True)
 
 
