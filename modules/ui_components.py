@@ -10,27 +10,11 @@ def hide_navigation_for_user():
     Hide navigation sidebar based on user authentication and type
     - Hides all navigation for non-authenticated users
     - Hides teacher pages for students
+
+    Note: This function doesn't use st.markdown() to avoid creating empty containers.
+    Navigation hiding is now handled in load_custom_css() function.
     """
-    if 'authenticated' not in st.session_state or not st.session_state.authenticated:
-        # Hide entire navigation for non-authenticated users
-        st.markdown("""
-        <style>
-        [data-testid="stSidebarNav"] {
-            display: none;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-    elif st.session_state.get('user_type') == 'student':
-        # Hide teacher pages for students
-        st.markdown("""
-        <style>
-        [data-testid="stSidebarNav"] li:has(a[href*="Panel_Nauczyciela"]),
-        [data-testid="stSidebarNav"] li:has(a[href*="Dashboard_Nauczyciela"]),
-        [data-testid="stSidebarNav"] li:has(a[href*="Szczegoly_Studenta"]) {
-            display: none;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+    pass  # Logic moved to load_custom_css() to prevent empty container creation
 
 
 def load_custom_css():
@@ -44,9 +28,29 @@ def load_custom_css():
     - Yellow accents (#FFD700) for interactive elements
     - Poppins font for all text
     """
-    css = """
+    # Navigation hiding logic
+    hide_nav_css = ""
+    if 'authenticated' not in st.session_state or not st.session_state.authenticated:
+        hide_nav_css = """
+        [data-testid="stSidebarNav"] {
+            display: none;
+        }
+        """
+    elif st.session_state.get('user_type') == 'student':
+        hide_nav_css = """
+        [data-testid="stSidebarNav"] li:has(a[href*="Panel_Nauczyciela"]),
+        [data-testid="stSidebarNav"] li:has(a[href*="Dashboard_Nauczyciela"]),
+        [data-testid="stSidebarNav"] li:has(a[href*="Szczegoly_Studenta"]) {
+            display: none;
+        }
+        """
+
+    css = f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    /* Navigation Hiding */
+    {hide_nav_css}
 
     /* Keyframe Animations */
     @keyframes fadeIn {
@@ -108,11 +112,6 @@ def load_custom_css():
     /* Remove empty space at top */
     .main .block-container > div:first-child {
         padding-top: 0 !important;
-    }
-
-    /* Hide empty elements */
-    .element-container:empty {
-        display: none !important;
     }
 
     /* Button Styles (Primary) */

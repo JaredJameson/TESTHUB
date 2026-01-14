@@ -14,12 +14,8 @@ st.set_page_config(
     layout="centered"
 )
 
-# Load custom CSS
+# Load custom CSS (includes navigation hiding)
 load_custom_css()
-
-# Hide navigation based on user type
-from modules.ui_components import hide_navigation_for_user
-hide_navigation_for_user()
 
 auth = AuthManager()
 sheets_manager = SheetsManager()
@@ -61,26 +57,24 @@ if auth.is_authenticated():
             st.switch_page("pages/5_Dashboard_Nauczyciela.py")
     st.stop()
 
-# Unified header and info card
-st.markdown("""
-<div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF0 100%);
-     border: 1px solid #E0E0E0; border-left: 6px solid #FFD700;
-     border-radius: 12px; padding: 40px; margin: 40px 0 32px 0;
-     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
-    <h1 style="margin: 0 0 8px 0; color: #000000; font-size: 32px;">AI NETWORK Test Platform</h1>
-    <h2 style="margin: 0 0 32px 0; color: #666; font-size: 20px; font-weight: 400;">Test Zaliczeniowy - AI w Marketingu</h2>
+# Header
+st.markdown("# AI NETWORK Test Platform")
+st.markdown("## Test Zaliczeniowy - AI w Marketingu")
 
-    <div style="background: #FFF8E1; border-radius: 8px; padding: 24px;">
-        <h3 style="margin: 0 0 16px 0; color: #000000; font-size: 18px;">Informacje o teście</h3>
-        <ul style="margin: 0; padding-left: 24px; color: #333; line-height: 1.8;">
-            <li><strong>Liczba pytań:</strong> 27</li>
-            <li><strong>Czas trwania:</strong> 30 minut</li>
-            <li><strong>Próg zaliczenia:</strong> 48% (13 poprawnych odpowiedzi)</li>
-            <li><strong>Format:</strong> Pytania jednokrotnego wyboru</li>
-        </ul>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+st.markdown("---")
+
+# Test information
+custom_card(
+    "Informacje o teście",
+    """
+    <ul>
+        <li><strong>Liczba pytań:</strong> 27</li>
+        <li><strong>Czas trwania:</strong> 30 minut</li>
+        <li><strong>Próg zaliczenia:</strong> 48% (13 poprawnych odpowiedzi)</li>
+        <li><strong>Format:</strong> Pytania jednokrotnego wyboru</li>
+    </ul>
+    """
+)
 
 st.markdown("### Logowanie")
 

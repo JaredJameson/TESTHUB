@@ -4,7 +4,7 @@ Student Test Page - Main Test Interface
 
 import streamlit as st
 import time
-from modules.ui_components import load_custom_css, hide_navigation_for_user, progress_bar, section_divider
+from modules.ui_components import load_custom_css, progress_bar, section_divider
 from modules.auth import AuthManager
 from modules.test_engine import TestEngine
 from modules.sheets_manager import SheetsManager
@@ -18,7 +18,6 @@ st.set_page_config(
 )
 
 load_custom_css()
-hide_navigation_for_user()
 auth = AuthManager()
 test_engine = TestEngine()
 email_service = EmailService()
