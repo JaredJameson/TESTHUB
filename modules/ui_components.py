@@ -101,8 +101,18 @@ def load_custom_css():
     /* Container Styles */
     .main .block-container {
         max-width: 1200px;
-        padding: 40px 40px 40px 40px;
+        padding: 1rem 40px 40px 40px;
         animation: fadeIn 0.5s ease-out;
+    }
+
+    /* Remove empty space at top */
+    .main .block-container > div:first-child {
+        padding-top: 0 !important;
+    }
+
+    /* Hide empty elements */
+    .element-container:empty {
+        display: none !important;
     }
 
     /* Button Styles (Primary) */
