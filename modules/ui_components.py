@@ -45,12 +45,12 @@ def load_custom_css():
         }
         '''
 
-    css = '''
+    css = """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     /* Navigation Hiding */
-    ''' + hide_nav_css + '''
+    {NAV_HIDING}
 
     /* Keyframe Animations */
     @keyframes fadeIn {
@@ -329,7 +329,10 @@ def load_custom_css():
         transition: transform 0.3s ease;
     }
     </style>
-    '''
+    """
+
+    # Replace placeholder with actual navigation hiding CSS
+    css = css.replace('{NAV_HIDING}', hide_nav_css)
     st.markdown(css, unsafe_allow_html=True)
 
 
