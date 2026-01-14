@@ -39,10 +39,11 @@ if 'test_questions' not in st.session_state:
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("**Czas na pytanie:** 30 sekund")
-        st.markdown("**Próg zaliczenia:** 48% (13/27)")
-    with col2:
         st.markdown("**Liczba pytań:** 27")
+        st.markdown("**Czas na pytanie:** 30 sekund")
+        st.markdown("**Całkowity czas:** ~13,5 minuty")
+    with col2:
+        st.markdown("**Próg zaliczenia:** 48% (13/27)")
         st.markdown("**Auto-zapis:** Co 5 pytań")
 
     st.markdown("---")

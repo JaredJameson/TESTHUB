@@ -71,6 +71,7 @@ custom_card(
     <ul>
         <li><strong>Liczba pytań:</strong> 27</li>
         <li><strong>Czas na pytanie:</strong> 30 sekund</li>
+        <li><strong>Całkowity czas testu:</strong> ~13,5 minuty (27 × 30s)</li>
         <li><strong>Próg zaliczenia:</strong> 48% (13 poprawnych odpowiedzi)</li>
         <li><strong>Format:</strong> Pytania jednokrotnego wyboru</li>
         <li><strong>Blokowanie:</strong> Pytanie blokuje się automatycznie po 30 sekundach</li>
