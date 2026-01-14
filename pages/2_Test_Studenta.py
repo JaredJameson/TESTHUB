@@ -28,31 +28,26 @@ auth.require_authentication(user_type="student")
 
 # Initialize test if not started
 if 'test_questions' not in st.session_state:
-    # Test instructions - NO EMOJIS
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF0 100%);
-         border: 1px solid #E0E0E0; border-left: 6px solid #FFD700;
-         border-radius: 12px; padding: 40px; margin: 20px 0;
-         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
-        <h1 style="margin: 0 0 8px 0; color: #000000; font-size: 32px;">Test Zaliczeniowy</h1>
-        <h2 style="margin: 0 0 32px 0; color: #666; font-size: 20px; font-weight: 400;">AI w Marketingu</h2>
+    # Test instructions header
+    st.markdown("# Test Zaliczeniowy")
+    st.markdown("## AI w Marketingu")
 
-        <div style="background: #FFF8E1; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
-            <h3 style="margin: 0 0 16px 0; color: #000000; font-size: 18px;">Informacje o teście</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; color: #333;">
-                <div><strong>Czas trwania:</strong> 30 minut</div>
-                <div><strong>Liczba pytań:</strong> 27</div>
-                <div><strong>Próg zaliczenia:</strong> 48% (13/27)</div>
-                <div><strong>Auto-zapis:</strong> Co 5 pytań</div>
-            </div>
-        </div>
+    st.markdown("---")
 
-        <div style="background: #FFF3E0; border-left: 4px solid #FF9800; border-radius: 8px; padding: 16px;">
-            <strong style="color: #E65100;">UWAGA:</strong>
-            <span style="color: #333;"> Timer uruchomi się automatycznie. Test zostanie wysłany po 30 minutach.</span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # Test information
+    st.markdown("### Informacje o teście")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Czas trwania:** 30 minut")
+        st.markdown("**Próg zaliczenia:** 48% (13/27)")
+    with col2:
+        st.markdown("**Liczba pytań:** 27")
+        st.markdown("**Auto-zapis:** Co 5 pytań")
+
+    st.markdown("---")
+
+    st.warning("**UWAGA:** Timer uruchomi się automatycznie. Test zostanie wysłany po 30 minutach.")
 
     if st.button("Rozpocznij Test", use_container_width=True, type="primary"):
         if test_engine.initialize_test(randomize=False):
