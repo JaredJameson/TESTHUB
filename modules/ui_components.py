@@ -104,8 +104,8 @@ def load_custom_css():
 
     /* Container Styles */
     .main .block-container {
-        max-width: 1200px;
-        padding: 1rem 40px 40px 40px;
+        max-width: 1400px;
+        padding: 1rem 20px 20px 20px;
         animation: fadeIn 0.5s ease-out;
     }
 

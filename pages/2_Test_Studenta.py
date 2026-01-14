@@ -28,46 +28,42 @@ auth.require_authentication(user_type="student")
 
 # Initialize test if not started
 if 'test_questions' not in st.session_state:
-    # Compact, professional test instructions card
-    st.markdown(f"""
+    # Test instructions - NO EMOJIS
+    st.markdown("""
     <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF0 100%);
          border: 1px solid #E0E0E0; border-left: 6px solid #FFD700;
-         border-radius: 12px; padding: 40px; margin: 40px 0 32px 0;
+         border-radius: 12px; padding: 40px; margin: 20px 0;
          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
         <h1 style="margin: 0 0 8px 0; color: #000000; font-size: 32px;">Test Zaliczeniowy</h1>
         <h2 style="margin: 0 0 32px 0; color: #666; font-size: 20px; font-weight: 400;">AI w Marketingu</h2>
 
         <div style="background: #FFF8E1; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
-            <h3 style="margin: 0 0 16px 0; color: #000000; font-size: 18px;">📋 Informacje o teście</h3>
+            <h3 style="margin: 0 0 16px 0; color: #000000; font-size: 18px;">Informacje o teście</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; color: #333;">
-                <div><strong>⏱️ Czas trwania:</strong> 30 minut</div>
-                <div><strong>📝 Liczba pytań:</strong> 27</div>
-                <div><strong>✅ Próg zaliczenia:</strong> 48% (13/27)</div>
-                <div><strong>💾 Auto-zapis:</strong> Co 5 pytań</div>
+                <div><strong>Czas trwania:</strong> 30 minut</div>
+                <div><strong>Liczba pytań:</strong> 27</div>
+                <div><strong>Próg zaliczenia:</strong> 48% (13/27)</div>
+                <div><strong>Auto-zapis:</strong> Co 5 pytań</div>
             </div>
         </div>
 
-        <div style="background: #FFF3E0; border-left: 4px solid #FF9800; border-radius: 8px; padding: 16px; margin-bottom: 32px;">
-            <strong style="color: #E65100;">⚠️ Uwaga:</strong>
+        <div style="background: #FFF3E0; border-left: 4px solid #FF9800; border-radius: 8px; padding: 16px;">
+            <strong style="color: #E65100;">UWAGA:</strong>
             <span style="color: #333;"> Timer uruchomi się automatycznie. Test zostanie wysłany po 30 minutach.</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([3, 1])
+    if st.button("Rozpocznij Test", use_container_width=True, type="primary"):
+        if test_engine.initialize_test(randomize=False):
+            st.success("Test zainicjalizowany pomyślnie!")
+            st.rerun()
+        else:
+            st.error("Błąd inicjalizacji testu. Spróbuj ponownie.")
 
-    with col1:
-        if st.button("🚀 Rozpocznij Test", use_container_width=True, type="primary"):
-            if test_engine.initialize_test(randomize=False):
-                st.success("Test zainicjalizowany pomyślnie!")
-                st.rerun()
-            else:
-                st.error("Błąd inicjalizacji testu. Spróbuj ponownie.")
-
-    with col2:
-        if st.button("← Wyloguj się", use_container_width=True):
-            auth.logout()
-            st.switch_page("pages/1_Logowanie_Studenta.py")
+    if st.button("Wyloguj się", use_container_width=True):
+        auth.logout()
+        st.switch_page("pages/1_Logowanie_Studenta.py")
 
     st.stop()
 
@@ -194,13 +190,14 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Radio buttons without label - cleaner look
+# Radio buttons with hidden label for accessibility
 selected = st.radio(
-    "",
+    "Odpowiedzi",
     options=['a', 'b', 'c', 'd'],
     format_func=lambda x: f"{x}) {options_text[x]}",
     index=['a', 'b', 'c', 'd'].index(current_answer) if current_answer else None,
-    key=f"q_{question['id']}"
+    key=f"q_{question['id']}",
+    label_visibility="collapsed"
 )
 
 # Save answer when changed - use toast instead of info to avoid button duplication
