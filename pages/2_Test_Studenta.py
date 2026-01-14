@@ -65,9 +65,55 @@ if 'test_questions' not in st.session_state:
 
 # Check if test already completed
 if st.session_state.get('test_completed', False):
-    st.success("Test został już ukończony!")
-    if st.button("Zobacz Wyniki"):
+    # Check if results already saved
+    if 'test_results' not in st.session_state:
+        # Calculate and save results
+        st.info("Zapisywanie wyników...")
+
+        results = test_engine.calculate_results()
+        student_data = {
+            'email': st.session_state.email,
+            'first_name': st.session_state.first_name,
+            'last_name': st.session_state.last_name,
+            'student_id': st.session_state.get('student_id', '')
+        }
+
+        formatted_results = test_engine.format_results_for_sheets(student_data, results)
+        st.session_state.test_results = results
+
+        # Save to Google Sheets
+        sheets = SheetsManager()
+        if sheets.save_test_result(formatted_results):
+            st.success("Wyniki zostały zapisane!")
+
+            # Send email notifications
+            student_full_name = f"{st.session_state.first_name} {st.session_state.last_name}"
+
+            # Send to student
+            email_service.send_student_result_email(
+                student_email=st.session_state.email,
+                student_name=student_full_name,
+                results=results,
+                async_send=True
+            )
+
+            # Send to teacher
+            email_service.send_teacher_notification_email(
+                student_name=student_full_name,
+                student_email=st.session_state.email,
+                results=results,
+                async_send=True
+            )
+        else:
+            st.error("Błąd zapisu wyników. Skontaktuj się z nauczycielem.")
+
+        time.sleep(2)
         st.switch_page("pages/3_Wyniki_Studenta.py")
+    else:
+        # Results already saved - show button to view them
+        st.success("Test został już ukończony!")
+        if st.button("Zobacz Wyniki"):
+            st.switch_page("pages/3_Wyniki_Studenta.py")
     st.stop()
 
 # Main test interface
@@ -224,19 +270,19 @@ if st.session_state.get('show_submit_confirmation', False):
     st.markdown("""
     <div style="background: #FFF3E0; border-left: 4px solid #FF9800; border-radius: 8px;
          padding: 20px; margin: 24px 0;">
-        <strong style="color: #E65100;">⚠️ Potwierdzenie:</strong>
+        <strong style="color: #E65100;">POTWIERDZENIE:</strong>
         <span style="color: #333;"> Odpowiedziałeś na {}/{} pytań. Czy na pewno chcesz zakończyć test?</span>
     </div>
     """.format(test_engine.get_answered_count(), total_questions), unsafe_allow_html=True)
 
     col_confirm1, col_confirm2 = st.columns(2)
     with col_confirm1:
-        if st.button("✅ Tak, zakończ test", use_container_width=True, type="primary"):
+        if st.button("Tak, zakończ test", use_container_width=True, type="primary"):
             st.session_state.test_completed = True
             st.session_state.show_submit_confirmation = False
             st.rerun()
     with col_confirm2:
-        if st.button("❌ Anuluj", use_container_width=True):
+        if st.button("Anuluj", use_container_width=True):
             st.session_state.show_submit_confirmation = False
             st.rerun()
 

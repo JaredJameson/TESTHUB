@@ -134,7 +134,7 @@ class TestEngine:
             int: Seconds remaining for current question
         """
         start_time = st.session_state.get('question_start_time', time.time())
-        time_limit = st.session_state.get('question_time_limit', 20)
+        time_limit = st.session_state.get('question_time_limit', 30)
         elapsed = time.time() - start_time
         remaining = max(0, time_limit - elapsed)
         return int(remaining)
